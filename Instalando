@@ -1,0 +1,22 @@
+Vamos começar o projeto
+npm init -y   
+
+Instalando as dependencias de produção e de desenvolvimento
+npm install express 
+npm install body-parser
+npm install --save-dev nodemon
+npm install mysql2 
+npm install sequelize sequelize-cli path
+
+Criar um projeto vazio, com algumas pastas pre montadas e configuradas
+npx sequelize-cli init
+
+Precisamos criar um arquivo .sequelizerc que vai ajudar o sequelize na busca das pastas. Avisando para o sequelize os caminhos das pastas para ele não ficar perdido
+
+Vamos criar os modelos baseado em tabelas o sequelize vai escrever essas tabelas e modelos a gente so vai precisar passar algumas informações pro sequelize 
+
+Vamos usar o comando sequelize-cli direto no terminal
+
+A gente vai passar pro sequelize o nome do modelo que vai ser criado baseado na tabela e os atributos com o tipo de dado. Com isso vai ser gerado um model pessoas.js e também sera criado a migration pessoas
+npx sequelize-cli model:create --name Pessoas --attributes nome:string,ativo:boolean,email:string,role:string
+

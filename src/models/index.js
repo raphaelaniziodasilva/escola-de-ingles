@@ -1,3 +1,5 @@
+// esse arquivo vai gerenciar todos os modelos do banco
+
 'use strict';
 
 const fs = require('fs');

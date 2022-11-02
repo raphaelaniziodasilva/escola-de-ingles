@@ -25,4 +25,3 @@ app.listen(port, () => console.log(`Servidor rodando na porta ${port}`))
 
 // exportando o app para poder usar em outras partes da aplicação
 module.exports = app
-
