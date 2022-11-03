@@ -9,6 +9,10 @@ const router = Router()
 
 // utilizando os metodos HTTP
 router.get("/pessoas", PessoaController.pegarTodasAsPessoas)
+router.get("/pessoas/:id", PessoaController.pegaUmaPessoa)
+router.post("/pessoas", PessoaController.criaPessoa)
+router.put("/pessoas/:id", PessoaController.atualizaPessoa)
+router.delete("/pessoas/:id", PessoaController.deletaPessoa)
 
 // exportando o router para usar no servidor
 module.exports = router
