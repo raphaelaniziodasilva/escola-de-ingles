@@ -3,12 +3,17 @@ const bodyParser = require("body-parser")
 
 // importando a rota de pessoasRoute
 const pessoas = require("./pessoasRoute")
+// importando a rota de TurmaRoute
+const turmas = require("./turmasRoute")
+
 
 module.exports = app => {
     // pegando os dados que vai chegar da requisição e convertendo para json
-    app.use(bodyParser.json())
+    app.use(
+     bodyParser.json(),
+     // usando as rotas
+     pessoas,
+     turmas
 
-    // usando as rotas
-    app.use(pessoas)
-
+    )
 }

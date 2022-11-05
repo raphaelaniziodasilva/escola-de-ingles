@@ -38,6 +38,7 @@ db:migrate:undo --name [data-hora]-create-[nome-da-tabela].js
 
 
 Vamos popular o banco usando o seeders que esta disponivel no sequelize-cli. Criando um arquivo de seeders pelo terminal
+Lembrando que sempre temos que criar os seeds em ordem porque eles vão rodar em ordem
 
 Vamos usar o comando npx sequelize-cli seed:generate --name demo-pessoa
 
