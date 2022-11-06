@@ -65,7 +65,75 @@ class PessoaController {
         }
     }
 
+    // listando uma matricula: as matriculas sempre vão estar vinculada a um aluno existente no database 
+    static async pegaUmaMatricula(req, res) {
+        // Para listar uma matricula precisamos do id estudante e o id da matricula
+        const {estudanteId, matriculaId,} = req.params
+        try {
+            const umaMatricula = await database.Matriculas.findOne({
+                where: {
+                    id: Number(matriculaId),
+                    estudante_id: Number(estudanteId)
+                }
+            })
+            return res.status(200).json(umaMatricula)
+        } catch (error) {
+            return res.status(500).json(error.message)            
+        }
+        // para pegar uma matricula no endPoint vamos passar o id do estudante e o id da matricula
+        // http://localhost:3000/pessoas/estudanteId/matriculas/matriculaId
+    }
 
+    // criando uma matricula. As matriculas estão relacionadas a um id de pessoa
+    static async criaMatricula(req, res) {
+        // Para criar uma matricula eu vou precisar receber o id de um estudante existente.
+        const {estudanteId} = req.params
+        // vamos fazer o espreed com corpo da requisição e o número de id do estudante
+        const novaMatricula = {...req.body, estudante_id: Number(estudanteId)}
+        try {
+            const novaMatriculaCriada = await database.Matriculas.create(novaMatricula)
+            return res.status(200).json(novaMatriculaCriada)
+        } catch (error) {
+            return res.status(500).json(error.message)            
+        }
+        // vamos criar uma nova matricula. Precisamos do estudante que ja esta cadastrado no database para assim poder realizar uma nova matricula com esse estudante
+        // http://localhost:3000/pessoas/estudanteId/matricula
+    }
+
+    // Atualizar matricula
+    static async atualizaMatricula(req, res) {
+        // Para atualizar uma matricula precisamos do id estudante e o id da matricula
+        const {estudanteId, matriculaId,} = req.params
+        const novasInfo = req.body
+        try {
+            // primeiro vai atualizar as informações
+            await database.Matriculas.update(novasInfo, {
+                where: {
+                   id: Number(matriculaId),
+                   estudante_id: Number(estudanteId)
+                }})
+            // segundo vai retornar as informações atualizadas
+            const matriculaAtualizada = await database.Matriculas.findOne({
+                where: {id: Number(matriculaId)}})
+            return res.status(200).json(matriculaAtualizada)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+        // Para atualizar a matricula no endPoint vamos passar o id do estudante e o id da matricula e depois as informações a serem atualizadas
+        // http://localhost:3000/pessoas/estudanteId/matriculas/matriculaId
+    }
+
+    // Deletar matricula
+    static async deletaMatricula(req, res) {
+        // Para deletar uma matricula precisamos do id estudante e o id da matricula
+        const {estudanteId, matriculaId,} = req.params
+        try {
+            await database.Matriculas.destroy({where: {id: Number(matriculaId)}})
+            return res.status(200).json({mensagem: `id ${matriculaId} deletado com sucesso`})
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
 }
 
 module.exports = PessoaController
