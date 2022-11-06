@@ -9,6 +9,5 @@ router.post("/turmas", TurmaController.criaTurma)
 router.put("/turmas/:id", TurmaController.atualizarTurma)
 router.delete("/turmas/:id", TurmaController.deletarTurma)
 
-
 // exportando o router para usar no servidor
 module.exports = router

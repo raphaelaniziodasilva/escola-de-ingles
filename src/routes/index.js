@@ -3,8 +3,10 @@ const bodyParser = require("body-parser")
 
 // importando a rota de pessoasRoute
 const pessoas = require("./pessoasRoute")
-// importando a rota de TurmaRoute
+// importando a rota de turmaRoute
 const turmas = require("./turmasRoute")
+// importando a rota de niveisRoute
+const niveis = require("./niveisRoute")
 
 
 module.exports = app => {
@@ -13,7 +15,7 @@ module.exports = app => {
      bodyParser.json(),
      // usando as rotas
      pessoas,
-     turmas
-
+     turmas,
+     niveis
     )
 }
