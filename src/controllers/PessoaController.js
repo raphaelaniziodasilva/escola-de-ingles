@@ -65,6 +65,19 @@ class PessoaController {
         }
     }
 
+    // restaura registro - pessoa que foi ocultado pelo soft delete
+    static async restauraPessoa(req, res) {
+        // pegando o id da pessoa que foi excluida pelo usuario ocultada para ser restaurada
+        const {id} = req.params
+        try {
+            await database.Pessoas.restore({where: {id: Number(id)}})
+            const pessoaRestaurada = await database.Pessoas.findOne({where: {id: Number(id)}})
+            return res.status(200).json({mensagem: `id ${id} restaurado com sucesso`})         
+        } catch (error) {
+            return res.status(500).json(error.message)            
+        }
+    }
+    
     // listando uma matricula: as matriculas sempre vão estar vinculada a um aluno existente no database 
     static async pegaUmaMatricula(req, res) {
         // Para listar uma matricula precisamos do id estudante e o id da matricula
@@ -134,6 +147,24 @@ class PessoaController {
             return res.status(500).json(error.message)
         }
     }
+
+    // restaura matricula que foi ocultado pelo soft delete
+    static async restauraMatricula(req, res) {
+        const { estudanteId, matriculaId } = req.params
+        try {
+          await database.Matriculas.restore({
+            where: {
+              id: Number(matriculaId),
+              estudante_id: Number(estudanteId)
+            }
+          })
+          return res.status(200).json({ mensagem: `id ${matriculaId} restaurado`})
+        } catch (error) {
+          return res.status(500).json(error.message)
+        }
+    }
 }
+
+
 
 module.exports = PessoaController
