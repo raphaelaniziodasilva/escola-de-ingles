@@ -17,7 +17,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Niveis.init({
-    descr_nivel: DataTypes.STRING
+    descr_nivel: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "O campo não pode ser vazio"
+        }
+      }
+    }
   }, {
     sequelize,
     paranoid: true,

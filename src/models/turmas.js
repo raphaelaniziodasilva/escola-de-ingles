@@ -25,7 +25,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Turmas.init({
-    data_inicio: DataTypes.DATEONLY
+    data_inicio: {
+      type: DataTypes.DATEONLY,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "O campo não pode ser vazio"
+        }
+      }
+    }
   }, {
     sequelize,
     paranoid: true,
