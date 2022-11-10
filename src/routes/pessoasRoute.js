@@ -21,6 +21,7 @@ router
 
 
  // Matriculas
+ .get("/pessoas/:estudanteId/matriculas", PessoaController.listaMatriculas)
  .get("/pessoas/:estudanteId/matriculas/:matriculaId", PessoaController.pegaUmaMatricula)
  .post("/pessoas/:estudanteId/matricula", PessoaController.criaMatricula)
  .put("/pessoas/:estudanteId/matriculas/:matriculaId", PessoaController.atualizaMatricula)

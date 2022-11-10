@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "docente_id"
       })
       Pessoas.hasMany(models.Matriculas, {
-        foreignKey: "estudante_id"
+        foreignKey: "estudante_id",
+        // usando o scope de associação para pegar todas as matriculas que esta confirmada e cancelada de uma determinada pessoa.
+        // Use // no scope para trazer a lista das matriculas cancelada tbm
+        scope: {status: "confirmado"}, // so vai trazer as matriculas que estão confirmadas
+        as: "aulasMatriculadas"
       })
     }
   }
@@ -87,8 +91,7 @@ module.exports = (sequelize, DataTypes) => {
     where: {
       // eu vou querer que todos os selects eles so retornem as pessoas que estejam ativas 
       ativo: true}
-   },
-   
+   },   
     modelName: 'Pessoas',
   });
   return Pessoas;
