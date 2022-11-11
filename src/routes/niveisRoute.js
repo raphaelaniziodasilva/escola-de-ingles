@@ -10,7 +10,7 @@ router
  .put("/niveis/:id", NivelController.atualizarNivel)
  .delete('/niveis/:id', NivelController.deletarNivel)
 
- // restaura
+ // restaura id que foi ocultado
  .post('/niveis/:id/restaura', NivelController.restauraNivel)
 
 module.exports = router

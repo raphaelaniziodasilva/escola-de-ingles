@@ -15,12 +15,13 @@ router
  .put("/pessoas/:id", PessoaController.atualizaPessoa)
  .delete("/pessoas/:id", PessoaController.deletaPessoa)
 
- // restauração
+ // restaura id que foi ocultado
  .post("/pessoas/:id/restaura", PessoaController.restauraPessoa)
  .post('/pessoas/:estudanteId/matricula/:matriculaId/restaura', PessoaController.restauraMatricula)
 
 
  // Matriculas
+  //.get("pessoas/:estudanteId/ matriculas", PessoaController.pegaMatriculas)
  .get("/pessoas/:estudanteId/matriculas", PessoaController.listaMatriculas)
  .get("/pessoas/:estudanteId/matriculas/:matriculaId", PessoaController.pegaUmaMatricula)
  .post("/pessoas/:estudanteId/matricula", PessoaController.criaMatricula)

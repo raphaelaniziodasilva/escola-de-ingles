@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "estudante_id",
         // usando o scope de associação para pegar todas as matriculas que esta confirmada e cancelada de uma determinada pessoa.
         // Use // no scope para trazer a lista das matriculas cancelada tbm
-        scope: {status: "confirmado"}, // so vai trazer as matriculas que estão confirmadas
+
+        // scope: {status: "confirmado"}, // so vai trazer as matriculas que estão confirmadas
         as: "aulasMatriculadas"
       })
     }

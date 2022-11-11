@@ -164,7 +164,23 @@ class PessoaController {
         }
     }
 
-    // listando todas as matriculas de uma determinada pessoa. Temos que usar o scope de associação no models pessoas no relacionamento de pessoas com matriculas
+    /*
+     listando todas as matriculas de uma pessoa
+     static async pegaMatriculas(req, res) {
+        const {estudanteId} = req.params
+        try {
+            const matriculasLista = await database.Matriculas.findAll({where: {
+                estudante_id: Number(estudanteId)
+            }})
+            return res.status(200).json(matriculasLista)
+        } catch (error) {
+            return res.status(500).json(error.message)            
+        }
+        http://localhost:3000/pessoas/estudanteId/matriculas
+        }
+    */
+
+    // listando todas as matriculas de uma determinada pessoa usando o scope de associação no models pessoas no relacionamento de pessoas com matriculas
     static async listaMatriculas(req, res) {
         const {estudanteId} = req.params
         try {
@@ -174,9 +190,8 @@ class PessoaController {
         } catch (error) {
             return res.status(500).json(error.message)            
         }
+        // http://localhost:3000/pessoas/estudanteId/matriculas
     }
 }
-
-
 
 module.exports = PessoaController
