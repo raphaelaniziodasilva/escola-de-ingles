@@ -192,6 +192,27 @@ class PessoaController {
         }
         // http://localhost:3000/pessoas/estudanteId/matriculas
     }
+
+    // contando quantas matriculas tem por turmas
+    static async  contandoMatriculasPorturmas(req, res) {
+        const {turmaId} = req.params
+        try {
+            const todasAsMatriculas = await database.Matriculas.findAndCountAll({
+                where: {
+                    turma_id: Number(turmaId),
+                    // contando so as matriculas confirmada
+                    status: "confirmado"
+                },
+                // ordenando os resultados da coluna em orde decrescente 
+                // order: [["estudante_id", "DESC"]]
+
+            })
+            res.status(200).json(todasAsMatriculas)            
+        } catch (error) {
+            return res.status(500).json(error.message)             
+        }
+
+    }
 }
 
 module.exports = PessoaController

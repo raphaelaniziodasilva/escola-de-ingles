@@ -9,6 +9,7 @@ const router = Router()
 
 // utilizando os metodos HTTP Pessoas
 router
+ // Pessoas para
  .get("/pessoas", PessoaController.pegarTodasAsPessoas)
  .get("/pessoas/:id", PessoaController.pegaUmaPessoa)
  .post("/pessoas", PessoaController.criaPessoa)
@@ -24,6 +25,7 @@ router
   //.get("pessoas/:estudanteId/ matriculas", PessoaController.pegaMatriculas)
  .get("/pessoas/:estudanteId/matriculas", PessoaController.listaMatriculas)
  .get("/pessoas/:estudanteId/matriculas/:matriculaId", PessoaController.pegaUmaMatricula)
+ .get("/pessoas/matriculas/:turmaId/confirmadas", PessoaController.contandoMatriculasPorturmas)
  .post("/pessoas/:estudanteId/matricula", PessoaController.criaMatricula)
  .put("/pessoas/:estudanteId/matriculas/:matriculaId", PessoaController.atualizaMatricula)
  .delete("/pessoas/:estudanteId/matriculas/:matriculaId", PessoaController.deletaMatricula)
