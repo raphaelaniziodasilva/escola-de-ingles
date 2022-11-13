@@ -69,7 +69,7 @@ class TurmaController {
         }
     }
 
-    // listando as turmas por intervalo de data
+    // O cliente gostaria de consultar as turmas por intervalo de data
     static async listandoTurmasPorIntervaloDeDatas(req, res) {
         // vamos precisar da data inicial e data final vamos pegar as datas via query string
         const {data_inicial, data_final} = req.query

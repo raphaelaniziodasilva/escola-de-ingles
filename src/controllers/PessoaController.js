@@ -180,7 +180,7 @@ class PessoaController {
         }
     */
 
-    // listando todas as matriculas de uma determinada pessoa usando o scope de associação no models pessoas no relacionamento de pessoas com matriculas
+    // consultar todas as matrículas confirmadas referentes a estudante X usando o scope de associação no models pessoas no relacionamento de pessoas com matriculas
     static async listaMatriculas(req, res) {
         const {estudanteId} = req.params
         try {
@@ -211,7 +211,43 @@ class PessoaController {
         } catch (error) {
             return res.status(500).json(error.message)             
         }
+    }
 
+    // contando quantas turmas existem
+    static async  pegaTurmasLotadas(req, res) {
+        try {
+            const turmasLotadas = await database.Matriculas.findAndCountAll({
+                where: {
+                    status: "confirmado"
+                },
+                attributes: ["turma_id"],
+                group: ["turma_id"],
+            })
+            res.status(200).json(turmasLotadas)            
+        } catch (error) {
+            return res.status(500).json(error.message)             
+        }
+    }
+
+    // quando o cadastro do estudante for desativado, todas as matrículas relativas a este estudante automaticamente passassem a ser “canceladas”.
+    static async cancelaPessoa(req, res) {
+        // passando como parametro o id do estudante porque a partir do cancelamneto do estudante que eu vou sair da tabela pessoas e ir percorrer a tabela matriculas procurando o estudant_id 
+        const {estudanteId} = req.params
+        try {
+            // vamos ter que acessar duas tabelas e atraves do seus modelos fazer alterações nelas fazer os updates
+            await database.Pessoas // tabela pessoas
+            // vamos modificar a coluna de ativo true para ativo false, no where vamos passar o id da tabela pessoas e vamos receber o valor de estudanteId
+            .update({ativo: false}, {where: {id: Number(estudanteId)}})
+
+            await database.Matriculas // tabela matriculas
+            // vamos modificar a coluna de status confirmado para status cancelado, no where e onde vamos alterar vamos alterar a coluna estudante_id porque e a coluna da tabela matriculas que relaciona com id da tabela pessoas e vamos receber o valor de estudanteId
+            .update({status: "cancelado"}, {where: {estudante_id: Number(estudanteId)}})
+
+            // os metodos update eles não retornam json eles retornam 0 ou 1 então vamos passar uma menssagem
+            res.status(200).json({message: `Matrícula referente a estudante ${estudanteId} canceladas`})
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
     }
 }
 

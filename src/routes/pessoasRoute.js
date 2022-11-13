@@ -26,7 +26,9 @@ router
  .get("/pessoas/:estudanteId/matriculas", PessoaController.listaMatriculas)
  .get("/pessoas/:estudanteId/matriculas/:matriculaId", PessoaController.pegaUmaMatricula)
  .get("/pessoas/matriculas/:turmaId/confirmadas", PessoaController.contandoMatriculasPorturmas)
+ .get("/pessoas/matriculas/lotada", PessoaController.pegaTurmasLotadas)
  .post("/pessoas/:estudanteId/matricula", PessoaController.criaMatricula)
+ .post("/pessoas/:estudanteId/cancelada", PessoaController.cancelaPessoa)
  .put("/pessoas/:estudanteId/matriculas/:matriculaId", PessoaController.atualizaMatricula)
  .delete("/pessoas/:estudanteId/matriculas/:matriculaId", PessoaController.deletaMatricula)
 
