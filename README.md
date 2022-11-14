@@ -1,5 +1,4 @@
-# escola-de-ingles
-## Projeto Escola de inglês
+# Projeto Escola de inglês
 <p>
 Neste Projeto foi feito API para um sistema de controle de alunos e turmas de uma escola de inglês
 </p>
