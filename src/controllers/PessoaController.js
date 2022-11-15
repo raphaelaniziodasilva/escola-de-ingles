@@ -16,6 +16,10 @@ class PessoaController {
     static async pegaUmaPessoa(req, res) {
         const { id } = req.params
         try {
+            const idExistente = await database.Pessoas.findOne({where: {id: Number(id)}})
+            if(!idExistente) {
+                return res.status(404).json("Id não cadastrado!");
+            }            
             const umaPessoa = await database.Pessoas.findOne({
                 where: {
                     id: Number(id) // convertendo o id para number para não ter nenhum problema 
@@ -31,6 +35,11 @@ class PessoaController {
     static async criaPessoa(req, res) {
         // passando os dados da pessoa pelo corpo da requisição
         const novaPessoa = req.body
+        const {email} = req.body
+        const emailExist = await database.Pessoas.findOne({ where: { email: String(email)}})
+        if(emailExist) {
+            return res.status(200).json("Email já cadastrado!");
+        }
         try {
             const novaPessoaCriada = await database.Pessoas.create(novaPessoa)
             return res.status(200).json(novaPessoaCriada)
@@ -43,6 +52,10 @@ class PessoaController {
     static async atualizaPessoa(req, res) {
         const { id } = req.params
         const novasInfo = req.body
+        const idExistente = await database.Pessoas.findOne({where: {id: Number(id)}})
+        if(!idExistente) {
+            return res.status(404).json("Id não cadastrado!");
+        }  
         try {
             // primeiro vai atualizar as informações
             await database.Pessoas.update(novasInfo, {where: {id: Number(id)}})
@@ -57,6 +70,10 @@ class PessoaController {
     // Deletar registro - pessoa
     static async deletaPessoa(req, res) {
         const { id } = req.params
+        const idExistente = await database.Pessoas.findOne({where: {id: Number(id)}})
+        if(!idExistente) {
+            return res.status(404).json("Id não cadastrado!");
+        }  
         try {
             await database.Pessoas.destroy({where: {id: Number(id)}})
             return res.status(200).json({mensagem: `id ${id} deletado com sucesso`})
