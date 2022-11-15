@@ -52,7 +52,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - Put/Atualizar nivel
 - Delete/Deleta nivel
 
-## Matrículas
+### Matrículas
 - Get/Listar todas as matriculas de uma pessoa
 - Get/Listar uma matricula
 - Get/Contando matriculas por turma por pessoa
@@ -62,6 +62,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - Put/Atualizar matricula
 - Delete/Deleta matricula
 
+## Documentação Postman
 </p>
 <p align="center">
 <a href="https://documenter.getpostman.com/view/21643838/2s8YmF1STn" target="_blank"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-ar21.svg"  height="170" width="202" alt="Run in Postman"></a>
