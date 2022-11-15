@@ -21,7 +21,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## Como instalar a API:
 1. Clonar o repositório
-2. Instalar as dependências de desenvolvimento e produção `npm install-y` 
+2. Instalar as dependências de desenvolvimento e produção `npm install i` 
 3. Migrações o banco de dados: transferencia de dados entre plataformas `npx sequelize-cli db:migrate`
 4. Popular o banco com o seeders `npx sequelize-cli db:seed:all`
 5. Para rodar o servidor `npm run start`
