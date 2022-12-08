@@ -29,41 +29,85 @@ As seguintes stacks foram usadas na construção do projeto:
 4. Popular o banco com o seeders `npx sequelize-cli db:seed:all`
 5. Para rodar o servidor `npm run start`
 
-### :file_folder: Funcionalidades da API
+Este projeto já conta com o código necessário para subir a API em um servidor:
+
+```
+├── package.json
+├── package-lock.json
+├── README.md
+├── .env
+├── .env.example
+├── .sequelizerc
+├── src
+│   ├── index.js
+│   ├── controllers
+│   │   └── NivelController.js
+│   │   └── PessoaController.js
+│   │   └── TurmaController.js
+│   ├── config
+│   │   ├── config.js
+│   ├── migrations
+│   │   └── 20221102145027-create-pessoas.js
+│   │   └── 20221104005926-create-niveis.js
+│   │   └── 20221104010713-create-turmas.js
+│   │   └── 20221104010854-create-matriculas.js
+│   │   └── 20221107151017-addcolumn-matriculas.js 
+│   │   └── 20221107151017-addcolumn-niveis.js
+│   │   └── 20221107151017-addcolumn-pessoas.js
+│   │   └── 20221107151017-addcolumn-turmas.js 
+│   ├── models
+│   │   └── index.js
+│   │   └── matriculas.js
+│   │   └── niveis.js
+│   │   └── pessoas.js
+│   │   └── turmas.js
+│   ├── routes
+│   │   └── index.js
+│   │   └── niveisRoute.js
+│   │   └── pessoasRoute.js
+│   │   └── turmasRoute.js
+│   ├── seeders
+│   │    └── 20221102162007-demo-pessoa.js
+│   │    └── 20221105202550-demo-nivel.js
+│   │    └── 20221105202631-demo-turmas.js
+│   │    └── 20221105202704-demo-matriculas.js
+```
+### Endpoints
+A API expõe os seguintes *endpoints* a partir da *base URL* `localhost:3000`:
 ### Pessoas
-- Get/Listar todas as pessoas
-- Get/Listar uma pessoa
-- Post/Criar pessoa
-- Post/Restaura pessoa
-- Put/Atualizar pessoa
-- Delete/Deleta pessoa
+* `Get/Listar todas as pessoas`
+* `Get/Listar uma pessoa`
+* `Post/Criar pessoa`
+* `Post/Restaura pessoa`
+* `Put/Atualizar pessoa`
+* `Delete/Deleta pessoa`
 
 ### Turmas
-- Get/Listar todas as turmas
-- Get/Lista uma turma
-- Get/Listando as turmas por intervalo de data
-- Post/Criar turma
-- Post/Restaura turma
-- Put/Atualizar turma
-- Delete/Deleta turma
+* `Get/Listar todas as turmas`
+* `Get/Lista uma turma`
+* `Get/Listando as turmas por intervalo de data`
+* `Post/Criar turma`
+* `Post/Restaura turma`
+* `Put/Atualizar turma`
+* `Delete/Deleta turma`
 
 ### Niveis
-- Get/Listar todos os niveis
-- Get/Listar um nivel
-- Post/Criar nivel
-- Post/Restaura nivel
-- Put/Atualizar nivel
-- Delete/Deleta nivel
+* `Get/Listar todos os niveis`
+* `Get/Listar um nivel`
+* `Post/Criar nivel`
+* `Post/Restaura nivel`
+* `Put/Atualizar nivel`
+* `Delete/Deleta nivel`
 
 ### Matrículas
-- Get/Listar todas as matriculas de uma pessoa
-- Get/Listar uma matricula
-- Get/Contando matriculas por turma por pessoa
-- Post/Criar matricula
-- Post/Restaura matricula
-- Post/Cancelando todas as matricula de um estudante
-- Put/Atualizar matricula
-- Delete/Deleta matricula
+* `Get t/Listar todas as matriculas de uma pessoa`
+* `Get/Listar uma matricula`
+* `Get/Contando matriculas por turma por pessoa`
+* `Post/Criar matricula`
+* `Post/Restaura matricula`
+* `Post/Cancelando todas as matricula de um estudante`
+* `Put/Atualizar matricula`
+* `Delete/Deleta matricula`
 
 ## Documentação Postman
 </p>
