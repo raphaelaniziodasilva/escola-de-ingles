@@ -1,10 +1,14 @@
-# Projeto Escola de inglês
-<p>
-Neste Projeto foi feito API para um sistema de controle de alunos e turmas de uma escola de inglês
-</p>
+# APi Escola de inglês
 
-## 🛠 Tecnologias utilizadas
-As seguintes ferramentas foram usadas na construção do projeto:
+## Resumo do projeto
+
+Projeto de API REST para prática de JavaScript.
+Neste Projeto foi feito API para um sistema de controle de alunos e turmas de uma escola de inglês.
+Escola de inglês com sistema de cadastro e manejo de pessoas, matriculas, turmas e niveis.
+
+
+## 🛠 Stack utilizada
+As seguintes stacks foram usadas na construção do projeto:
 <br><br>
 
 <div align="left">
@@ -18,7 +22,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" height="40" width="52" alt="github logo"  />
 </div>
 
-## Como instalar a API:
+## Instalação
 1. Clonar o repositório, após clonar o repositório criar um arquivo .env e alterar credenciais do banco de dados, baseado no arquivo .env.example
 2. Instalar as dependências de desenvolvimento e produção `npm install i` 
 3. Migrações o banco de dados: transferencia de dados entre plataformas `npx sequelize-cli db:migrate`
